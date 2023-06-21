@@ -158,7 +158,6 @@ pub async fn run() {
     }
     let event_loop = EventLoop::new();
     let window = WindowBuilder::new().build(&event_loop).unwrap();
-    let mut state = State::new(window).await;
 
     #[cfg(target_arch = "wasm32")]
     {
@@ -178,6 +177,7 @@ pub async fn run() {
             })
             .expect("Couldn't append canvas to document body.");
     }
+    let mut state = State::new(window).await;
 
     event_loop.run(move |event, _, control_flow| {
         match event {
